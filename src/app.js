@@ -2,8 +2,14 @@
 import express from "express"
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import {setupSwagger} from ""
+
+
 
 const app = express()
+
+setupSwagger(app)
+
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials:true
@@ -16,9 +22,6 @@ app.use(cookieParser());
 // routes import 
 
 import userRouter from "./routes/user.routes.js"
-
-// route declaretion 
-
 app.use("/api/v1/users", userRouter);
 
 
